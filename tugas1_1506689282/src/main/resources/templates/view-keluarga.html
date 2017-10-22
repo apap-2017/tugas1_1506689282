@@ -1,0 +1,93 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+	
+<head>
+	<title>Keluarga</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"></link>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+<br></br>
+<div class="container">
+	<h2 th:text="'Lihat Data Keluarga - ' + ${keluarga.nkk}">Lihat Data Keluarga</h2>
+	<br></br>
+	<a class="btn btn-primary" th:href="@{'/keluarga/ubah/' + ${keluarga.nkk}}">Ubah Data</a>
+	<br></br><br></br>
+	<table class="table table-borderless">
+		<tbody>
+			<tr>
+				<td><b>NKK</b></td>
+				<td th:text="${keluarga.nkk}">NKK</td>
+			</tr>
+			<tr>
+				<td><b>Alamat</b></td>
+				<td th:text="${keluarga.alamat}">alamat</td>
+			</tr>
+			<tr>
+				<td><b>RT/RW</b></td>
+				<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}">RT/RW</td>
+			</tr>
+			<tr>
+				<td><b>Kelurahan/Desa</b></td>
+				<td th:text="${kelurahan.namaKelurahan}">Kelurahan/Desa</td>
+			</tr>
+			<tr>
+				<td><b>Kecamatan</b></td>
+				<td th:text="${kecamatan.namaKecamatan}">Kecamatan</td>
+			</tr>
+			<tr>
+				<td><b>Kota</b></td>
+				<td th:text="${kota.namaKota}">Kota</td>
+			</tr>
+			<tr>
+				<td><b>Status Kartu Keluarga</b></td>
+				<td th:if="${keluarga.isTidakBerlaku == 1}">Tidak Berlaku</td>
+				<td th:unless="${keluarga.isTidakBerlaku == 1}">Berlaku</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<hr></hr>
+	<table class = "table table-bordered">
+		<thead>
+			<tr>
+				<th>No</th>
+				<th>Nama Lengkap</th>
+				<th>NIK</th>
+				<th>Jenis Kelamin</th>
+				<th>Tempat Lahir</th>
+				<th>Tanggal Lahir</th>
+				<th>Agama</th>
+				<th>Pekerjaan</th>
+				<th>Status Perkawinan</th>
+				<th>Status dalam Keluarga</th>
+				<th>Kewarganegaraan</th>
+				<th>Status</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="penduduk,iterationStatus: ${listPenduduk}">
+				<td th:text="${iterationStatus.count}">No</td>
+				<td th:text="${penduduk.namaPenduduk}">Nama Penduduk</td>
+				<td th:text="${penduduk.nik}">NIK</td>
+				<td th:text="${penduduk.gender}">Jenis Kelamin</td>
+				<td th:text="${penduduk.tempatLahir}">Tempat Lahir</td>
+				<td th:text="${penduduk.tanggalLahir}">Tanggal Lahir</td>
+				<td th:text="${penduduk.agama}">Agama</td>
+				<td th:text="${penduduk.pekerjaan}">Pekerjaan</td>
+				<td th:text="${penduduk.statusPerkawinan}">Status Perkawinan</td>
+				<td th:text="${penduduk.statusDalamKeluarga}">Status dalam Keluarga</td>
+				<td th:text="${penduduk.kewarganegaraan}">Kewarganegaraan</td>
+				<td th:text="${penduduk.kematian}">Status</td>
+				<td><a class="btn btn-default btn-small" th:href="@{'/penduduk?nik=' + ${penduduk.nik}}">Lihat Penduduk</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+</body>
+</html>

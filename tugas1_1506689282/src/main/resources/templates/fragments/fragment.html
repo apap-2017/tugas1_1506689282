@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="head(title)">
+	<title th:text="${title}"></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"></link>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+</head>
+
+<body>
+	<div th:fragment="navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			<a class="navbar-brand" href="/">SI Kependudukan</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarNav" aria-controls="navbarNav"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarNav">
+			<ul class="navbar-nav">
+				<li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+				<li class="nav-item"><a class="nav-link" href="/penduduk/tambah">Tambah Penduduk</a></li>
+				<li class="nav-item"><a class="nav-link" href="/keluarga/tambah">Tambah Keluarga</a></li>
+				<li class="nav-item"><a class="nav-link" href="/penduduk/cari">Cari Penduduk Kota</a></li>
+			</ul>
+		</div>
+		</nav>
+	</div>
+
+  <div th:fragment="header">
+    <ul>
+      <li><a href="/">Home</a></li>
+      <li><a href="/student/viewall">Daftar Mahasiswa</a></li>
+      <li><a href="/student/add">Menambah Mahasiswa</a></li>
+    </ul>
+  </div>
+
+  <div th:fragment="footer">
+    <hr/>
+    <h4>Mata Kuliah APAP</h4>
+  </div>
+</body>
+
+</html> 

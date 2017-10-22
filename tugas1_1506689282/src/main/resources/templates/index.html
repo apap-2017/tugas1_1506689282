@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>SI Kependudukan</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"></link>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+	<div class="container">
+		<br></br>
+		<h1>Sistem Informasi Kependudukan Online Provinsi DKI Jakarta</h1>
+		<p>Selamat datang di Sistem Informasi Kependudukan Online Provinsi
+			DKI Jakarta</p>
+		<hr></hr>
+		<h4>Lihat Data Penduduk Berdasarkan NIK</h4>
+		<form action="/penduduk" method="get">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Masukkan Nomor Induk
+					Kependudukan</label> <input type="text" class="form-control" id="inputNik"
+					name="nik" placeholder="Masukkan NIK"></input>
+			</div>
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</form>
+		
+		<hr></hr>
+		<h4>Lihat Data Keluarga Berdasarkan NKK</h4>
+		<form action="/keluarga" method="get">
+			<div class="form-group">
+				<label for="exampleInputEmail1">Masukkan Nomor Kartu Keluarga</label> <input type="text" class="form-control" id="inputNkk"
+					name="nkk" placeholder="Masukkan NKK"></input>
+			</div>
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</form>
+	</div>
+</body>
+</html>

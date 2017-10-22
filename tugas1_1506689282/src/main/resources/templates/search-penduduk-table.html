@@ -1,0 +1,155 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Cari Pendudukk</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.css"></link>
+	<script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
+</head>
+<body>
+	<script type="text/javascript">
+	  	$(document).ready( function () {
+	  		    $('#penduduk').DataTable();
+	  	});    
+	</script>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+	<div class="container">
+		<br></br>
+		<h1>Lihat Data Penduduk Berdasarkan Kota</h1>
+		<hr></hr>
+		<br></br>
+		<br></br>
+		<h4>Penduduk Termuda</h4>
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><b>NIK</b></td>
+					<td th:text="${pendudukTermuda.nik}">NIK</td>
+				</tr>
+				<tr>
+					<td><b>Nama</b></td>
+					<td th:text="${pendudukTermuda.namaPenduduk}">Nama Penduduk</td>
+				</tr>
+				<tr>
+					<td><b>Tempat/Tanggal Lahir</b></td>
+					<td th:text="${pendudukTermuda.tempatLahir} + ', ' + ${pendudukTermuda.tanggalLahir}">Tempat/Tanggal Lahir</td>
+				</tr>
+				<tr>
+					<td><b>Golongan Darah</b></td>
+					<td th:text="${pendudukTermuda.golonganDarah}">Golongan Darah</td>
+				</tr>
+				<tr>
+					<td><b>Agama</b></td>
+					<td th:text="${pendudukTermuda.agama}">Agama</td>
+				</tr>
+				<tr>
+					<td><b>Status Perkawinan</b></td>
+					<td th:text="${pendudukTermuda.statusPerkawinan}">Status Perkawinan</td>
+				</tr>
+				<tr>
+					<td><b>Pekerjaan</b></td>
+					<td th:text="${pendudukTermuda.pekerjaan}">Pekerjaan</td>
+				</tr>
+				<tr>
+					<td><b>Kewarganergaraan</b></td>
+					<td th:text="${pendudukTermuda.kewarganegaraan}">Kewarganegaraan</td>
+				</tr>
+				<tr>
+					<td><b>Status</b></td>
+					<td th:text="${pendudukTermuda.kematian}">Status</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<hr></hr>
+		<br></br>
+		<br></br>
+		<h4>Penduduk Tertua</h4>
+				<table class="table">
+			<tbody>
+				<tr>
+					<td><b>NIK</b></td>
+					<td th:text="${pendudukTertua.nik}">NIK</td>
+				</tr>
+				<tr>
+					<td><b>Nama</b></td>
+					<td th:text="${pendudukTertua.namaPenduduk}">Nama Penduduk</td>
+				</tr>
+				<tr>
+					<td><b>Tempat/Tanggal Lahir</b></td>
+					<td th:text="${pendudukTertua.tempatLahir} + ', ' + ${pendudukTertua.tanggalLahir}">Tempat/Tanggal Lahir</td>
+				</tr>
+				<tr>
+					<td><b>Golongan Darah</b></td>
+					<td th:text="${pendudukTertua.golonganDarah}">Golongan Darah</td>
+				</tr>
+				<tr>
+					<td><b>Agama</b></td>
+					<td th:text="${pendudukTertua.agama}">Agama</td>
+				</tr>
+				<tr>
+					<td><b>Status Perkawinan</b></td>
+					<td th:text="${pendudukTertua.statusPerkawinan}">Status Perkawinan</td>
+				</tr>
+				<tr>
+					<td><b>Pekerjaan</b></td>
+					<td th:text="${pendudukTertua.pekerjaan}">Pekerjaan</td>
+				</tr>
+				<tr>
+					<td><b>Kewarganergaraan</b></td>
+					<td th:text="${pendudukTertua.kewarganegaraan}">Kewarganegaraan</td>
+				</tr>
+				<tr>
+					<td><b>Status</b></td>
+					<td th:text="${pendudukTertua.kematian}">Status</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<hr></hr>
+		<br></br>
+		<br></br>
+		
+		<h4>Data Penduduk</h4>
+		<table id="penduduk">
+			<thead>
+				<tr>
+					<th>No</th>
+					<th>Nama Lengkap</th>
+					<th>NIK</th>
+					<th>Jenis Kelamin</th>
+					<th>Tempat Lahir</th>
+					<th>Tanggal Lahir</th>
+					<th>Agama</th>
+					<th>Pekerjaan</th>
+					<th>Status Perkawinan</th>
+					<th>Status dalam Keluarga</th>
+					<th>Kewarganegaraan</th>
+					<th>Status</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="penduduk,iterationStatus: ${listPenduduk}">
+					<td th:text="${iterationStatus.count}">No</td>
+					<td th:text="${penduduk.namaPenduduk}">Nama Penduduk</td>
+					<td th:text="${penduduk.nik}">NIK</td>
+					<td th:text="${penduduk.gender}">Jenis Kelamin</td>
+					<td th:text="${penduduk.tempatLahir}">Tempat Lahir</td>
+					<td th:text="${penduduk.tanggalLahir}">Tanggal Lahir</td>
+					<td th:text="${penduduk.agama}">Agama</td>
+					<td th:text="${penduduk.pekerjaan}">Pekerjaan</td>
+					<td th:text="${penduduk.statusPerkawinan}">Status Perkawinan</td>
+					<td th:text="${penduduk.statusDalamKeluarga}">Status dalam Keluarga</td>
+					<td th:text="${penduduk.kewarganegaraan}">Kewarganegaraan</td>
+					<td th:text="${penduduk.kematian}">Status</td>
+				</tr>
+			</tbody>
+		</table>
+		
+	</div>
+</body>
+</html>

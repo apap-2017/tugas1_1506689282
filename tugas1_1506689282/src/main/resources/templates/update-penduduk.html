@@ -1,0 +1,110 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ubah Data Penduduk</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+	<div class="container">
+		<br></br>
+		<h1>Ubah Data Penduduk</h1>
+		<hr></hr>
+		<form action="'/penduduk/ubah/' + ${penduduk.nik}" th:action="@{'/penduduk/ubah/' + ${penduduk.nik}}" th:object="${penduduk}" method="post">
+			<div class="form-group">
+				<label for="input-nama">Nama</label>
+				<input th:value="${penduduk.namaPenduduk}" th:field="*{namaPenduduk}" type="text" class="form-control" id="input-nama" name="nama" placeholder="Masukkan Nama"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-tempat-lahir">Tempat Lahir</label>
+				<input th:value="${penduduk.tempatLahir}" th:field="*{tempatLahir}" type="text" class="form-control" id="input-tempat-lahir" name="tempat-lahir" placeholder="Masukkan Tempat Lahir"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-tanggal-lahir">Tanggal Lahir</label>
+				<input th:value="${penduduk.tanggalLahir}" th:field="*{tanggalLahir}" type="date" class="form-control" id="input-tanggal-lahir" name="tanggal-lahir" placeholder="Masukkan Tanggal Lahir"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-jenis-kelamin">Jenis Kelamin</label>
+				<select th:value="${penduduk.jenisKelamin}" th:field="*{jenisKelamin}" class="form-control" id="input-jenis-kelamin" name="jenis-kelamin">
+					<option value="0">Laki-laki</option>
+					<option value="1">Perempuan</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-golongan-darah">Golongan Darah</label>
+				<select th:value="${penduduk.golonganDarah}" th:field="*{golonganDarah}" class="form-control" id="input-golongan-darah" name="golongan-darah">
+					<option value="A-">A-</option>
+					<option value="A+">A+</option>
+					<option value="B-">B-</option>
+					<option value="B+">B+</option>
+					<option value="O-">O-</option>
+					<option value="O+">O+</option>
+					<option value="AB-">AB-</option>
+					<option value="AB+">AB+</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-agama">Agama</label>
+				<input th:value="${penduduk.agama}" th:field="*{agama}" type="text" class="form-control" id="input-agama" name="agama" placeholder="Masukkan Agama"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-status-perkawinan">Status Perkawinan</label>
+				<select th:value="${penduduk.statusPerkawinan}" th:field="*{statusPerkawinan}" class="form-control" id="input-status-perkawinan" name="status-perkawinan">
+					<option value="Belum Kawin">Belum Kawin</option>
+					<option value="Kawin">Kawin</option>
+					<option value="Cerai Hidup">Cerai Hidup</option>
+					<option value="Cerai Mati">Cerai Mati</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-pekerjaan">Pekerjaan</label>
+				<input th:value="${penduduk.pekerjaan}" th:field="*{pekerjaan}" type="text" class="form-control" id="input-pekerjaan" name="pekerjaan" placeholder="Masukkan Pekerjaan"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-status-kematian">Status Kematian</label>
+				<select th:value="${penduduk.isWafat}" th:field="*{isWafat}" class="form-control" id="input-status-perkawinan" name="status-perkawinan">
+					<option value="0">Hidup</option>
+					<option value="1">Wafat</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-kewarganegaraan">Kewarganegaraan</label>
+				<select th:value="${penduduk.isWni}" th:field="*{isWni}" class="form-control" id="input-kewarganegaraan" name="kewarganegaraan">
+					<option value="1">WNI</option>
+					<option value="0">WNA</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-status-keluarga">Status dalam Keluarga</label>
+				<select th:value="${penduduk.statusDalamKeluarga}" th:field="*{statusDalamKeluarga}" class="form-control" id="input-status-keluarga" name="status-keluarga">
+					<option value="Kepala Keluarga">Kepala Keluarga</option>
+					<option value="Anak">Anak</option>
+					<option value="Famili Lain">Famili Lain</option>
+					<option value="Pembantu">Pembantu</option>
+				</select>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-keluarga">ID Keluarga</label>
+				<input th:value="${penduduk.idKeluarga}" th:field="*{idKeluarga}" type="text" class="form-control" id="input-keluarga" name="keluarga" placeholder="Masukkan ID Keluarga"></input>
+			</div>
+			<input type="hidden" th:field="*{idPenduduk}"></input>
+			<button type="submit" class="btn btn-primary">Simpan</button>
+		</form>
+	</div>
+</body>
+</html>

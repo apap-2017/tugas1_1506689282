@@ -1,0 +1,50 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ubah Data Keluarga</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+	<div class="container">
+		<br></br>
+		<h1>Ubah Data Keluarga</h1>
+		<hr></hr>
+		<form action="'/keluarga/ubah/' + ${keluarga.nkk}" th:action="@{'/keluarga/ubah/' + ${keluarga.nkk}}" th:object="${keluarga}" method="post">
+			<div class="form-group">
+				<label for="input-alamat">Alamat</label>
+				<input th:field="*{alamat}" type="text" class="form-control" id="input-alamat" name="alamat" placeholder="Masukkan Alamat"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-rt">RT</label>
+				<input th:field="*{rt}" type="text" class="form-control" id="input-rt" name="rt" placeholder="Masukkan RT"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-rw">RW</label>
+				<input th:field="*{rw}" type="text" class="form-control" id="input-rw" name="rw" placeholder="Masukkan RW"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-kelurahan">Kelurahan/Desa</label>
+				<input th:field="*{idKelurahan}" type="text" class="form-control" id="input-kelurahan" name="kelurahan" placeholder="Masukkan Agama"></input>
+			</div>
+			
+			<div class="form-group">
+				<label for="input-berlaku">Status Berlaku</label>
+				<select th:field="*{isTidakBerlaku}" class="form-control" id="input-berlaku" name="berlaku">
+					<option value="0">Berlaku</option>
+					<option value="1">Tidak Berlaku</option>
+				</select>
+			</div>
+			<input type="hidden" th:field="*{idKeluarga}"></input>
+			<button type="submit" class="btn btn-primary">Simpan</button>
+		</form>
+	</div>
+</body>
+</html>

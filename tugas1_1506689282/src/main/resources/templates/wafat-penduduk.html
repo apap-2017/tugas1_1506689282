@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Status Kematian</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<a class="navbar-brand" href="/">SI Kependudukan</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+		data-target="#navbarNav" aria-controls="navbarNav"
+		aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+	<div class="collapse navbar-collapse" id="navbarNav">
+		<ul class="navbar-nav">
+			<li class="nav-item active"><a class="nav-link" href="#">Home
+				<span class="sr-only">(current)</span>
+			</a></li>
+			<li class="nav-item"><a class="nav-link" href="#">Cari Data</a>
+			</li>
+		</ul>
+	</div>
+	</nav>
+
+	<div class="container">
+		<br></br>
+		<h1>Status Kematian</h1>
+		
+		<h3 th:text="${penduduk.kematian}">Status Kematian</h3>
+		<hr></hr>
+		<form action="'/penduduk/' + ${penduduk.nik}" th:action="@{'/penduduk/' + ${penduduk.nik}}" th:object="${penduduk}" method="post">
+			<input type="hidden" th:field="*{idPenduduk}"></input>
+			<input type="hidden" th:field="*{idKeluarga}"></input>
+			<input th:if="${penduduk.isWafat == 1}" type="hidden" 
+			name="isWafat" value="0"></input>
+			<input th:unless="${penduduk.isWafat == 1}" type="hidden" 
+			name="isWafat" value="1"></input>
+			<button type="submit" class="btn btn-primary">Set</button>
+		</form>
+	</div>
+</body>
+</html>

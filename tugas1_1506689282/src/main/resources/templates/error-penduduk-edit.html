@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Penduduk Tidak Ditemukan</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+<div th:replace="fragments/fragment :: navbar"></div>
+<div class="container">
+	<br></br>
+	<h1>ERROR</h1>
+	<p th:text="'Penduduk dengan NIK ' + ${nik} + ' tidak ditemukan'">Penduduk tidak ditemukan</p>
+</div>
+</body>
+</html>

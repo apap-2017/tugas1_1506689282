@@ -1,0 +1,30 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Cari Penduduk</title>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../../css/bootstrap-theme.min.css"></link>
+	<script src="../../js/jquery-3.2.1.min.js"></script>
+	<script src="../../js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+
+	<div class="container">
+		<br></br>
+		<h1>Lihat Data Penduduk Berdasarkan Kota</h1>
+		<hr></hr>
+		<form action="/penduduk/cari" th:action="@{/penduduk/cari}" method="get">
+		
+			<div class="form-group">
+				<label for="input-kota">Kota</label>
+				<select id="input-kota" class="form-control" name="kt">
+					<option th:each="kota, iterationStatus: ${listKota}" th:value="${kota.idKota}" th:text="${kota.namaKota}">Kota</option>
+				</select>
+			</div>
+			
+			<button type="submit" class="btn btn-primary">Lihat</button>
+		</form>
+	</div>
+</body>
+</html>

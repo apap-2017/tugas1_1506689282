@@ -1,0 +1,20 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Sukses</title>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css"></link>
+	<script src="../js/jquery-3.2.1.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<meta http-equiv="refresh" th:content="'2;/penduduk?nik=' + ${nik}"></meta>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+	<br></br>
+	<div class="container">
+		<h1>Sukses !</h1>
+		<p th:if="${isWafat == 1}" th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil dinonaktifkan'">Penduduk Berhasil dinonaktifkan</p>
+		<p th:unless="${isWafat == 1}" th:text="'Penduduk dengan NIK ' + ${nik} + ' berhasil diaktifkan'">Penduduk Berhasil diaktifkan</p>
+	</div>
+</body>
+</html>

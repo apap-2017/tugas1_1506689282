@@ -1,0 +1,115 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Penduduk</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"></link>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css"></link>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: navbar"></div>
+	<br></br>
+	<div class="container">
+		<h2 th:text="'Lihat Data Penduduk - ' + ${penduduk.nik}">Lihat Data Penduduk</h2>
+		<br></br>
+		<a class="btn btn-primary" th:href="@{'/penduduk/ubah/' + ${penduduk.nik}}">Ubah Data</a>
+		<br></br><br></br>
+	
+		<table class="table">
+			<tbody>
+				<tr>
+					<td><b>NIK</b></td>
+					<td th:text="${penduduk.nik}" colspan="2">NIK</td>
+				</tr>
+				<tr>
+					<td><b>Nama</b></td>
+					<td th:text="${penduduk.namaPenduduk}" colspan="2">Nama Penduduk</td>
+				</tr>
+				<tr>
+					<td><b>Tempat/Tanggal Lahir</b></td>
+					<td th:text="${penduduk.tempatLahir} + ', ' + ${penduduk.tanggalLahir}" colspan="2">Tempat/Tanggal Lahir</td>
+				</tr>
+				<tr>
+					<td><b>Alamat</b></td>
+					<td th:text="${keluarga.alamat}" colspan="2">Alamat</td>
+				</tr>
+				<tr>
+					<td><b>Jenis Kelamin</b></td>
+					<td th:text="${penduduk.gender}" colspan="2">Jenis Kelamin</td>
+				</tr>
+				<tr>
+					<td><b>RT/RW</b></td>
+					<td th:text="${keluarga.rt} + '/' + ${keluarga.rw}" colspan="2">RT/RW</td>
+				</tr>
+				<tr>
+					<td><b>Kelurahan/Desa</b></td>
+					<td th:text="${kelurahan.namaKelurahan}" colspan="2">Kelurahan/Desa</td>
+				</tr>
+				<tr>
+					<td><b>Kecamatan</b></td>
+					<td th:text="${kecamatan.namaKecamatan}" colspan="2">Kecamatan</td>
+				</tr>
+				<tr>
+					<td><b>Kota</b></td>
+					<td th:text="${kota.namaKota}" colspan="2">Kota</td>
+				</tr>
+				<tr>
+					<td><b>Golongan Darah</b></td>
+					<td th:text="${penduduk.golonganDarah}" colspan="2">Golongan Darah</td>
+				</tr>
+				<tr>
+					<td><b>Agama</b></td>
+					<td th:text="${penduduk.agama}" colspan="2">Agama</td>
+				</tr>
+				<tr>
+					<td><b>Status Perkawinan</b></td>
+					<td th:text="${penduduk.statusPerkawinan}" colspan="2">Status Perkawinan</td>
+				</tr>
+				<tr>
+					<td><b>Status dalam Keluarga</b></td>
+					<td th:text="${penduduk.statusDalamKeluarga}" colspan="2">Status dalam Keluarga</td>
+				</tr>
+				<tr>
+					<td><b>Pekerjaan</b></td>
+					<td th:text="${penduduk.pekerjaan}" colspan="2">Pekerjaan</td>
+				</tr>
+				<tr>
+					<td><b>Kewarganergaraan</b></td>
+					<td th:text="${penduduk.kewarganegaraan}" colspan="2">Kewarganegaraan</td>
+				</tr>
+				<tr>
+					<td><b>ID Keluarga</b></td>
+					<td th:text="${penduduk.idKeluarga}" >ID Keluarga</td>
+					<td><a class="btn btn-default btn-small" th:href="@{'/keluarga?nkk=' + ${keluarga.nkk}}">Lihat Keluarga</a></td>
+				</tr>
+				<tr>
+					<td><b>Status</b></td>
+					<td th:text="${penduduk.kematian}">Status</td>
+					<td>					
+						<form action="/penduduk/mati" th:action="@{/penduduk/mati}" th:object="${penduduk}" method="post">
+								<input type="hidden" th:field="*{idPenduduk}"></input>
+								<input type="hidden" th:field="*{idKeluarga}"></input>
+								<input type="hidden" th:field="*{nik}"></input>
+								
+								<div th:if="${penduduk.isWafat == 1}">
+									<input type="hidden" 
+									name="isWafat" value="0"></input>
+									<button type="submit" class="btn btn-default btn-small">Set Hidup</button>
+								</div>
+								
+								<div th:unless="${penduduk.isWafat == 1}" >
+									<input type="hidden" 
+									name="isWafat" value="1"></input>
+									<button type="submit" class="btn btn-default btn-small">Set Wafat</button>
+								</div>
+						</form>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+
+	</div>
+</body>
+</html>
