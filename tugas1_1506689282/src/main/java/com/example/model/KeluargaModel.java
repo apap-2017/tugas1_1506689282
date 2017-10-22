@@ -28,7 +28,13 @@ public class KeluargaModel {
 		String nkk = "";
 		String kodeKecamatan = kecamatan.getKodeKecamatan();
 		nkk += kodeKecamatan.substring(0, kodeKecamatan.length() - 1);
-		nkk += LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyy"));
+		
+		if(getNkk() == null) {
+			nkk += LocalDate.now().format(DateTimeFormatter.ofPattern("ddMMyy"));
+		} else {
+			nkk += getNkk().substring(6, 12);
+		}
+		
 		
 		nkkMirip = keluargaDAO.selectKeluargaMiripNKK(nkk + '%', getIdKeluarga());
 		
